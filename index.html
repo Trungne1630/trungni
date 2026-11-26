@@ -4,106 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký 4G Nhanh</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        body {
-            background-color: #f3f4f6;
-            color: #1f2937;
-            padding: 20px 15px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        h1 {
-            font-size: 24px;
-            color: #111827;
-            margin-bottom: 8px;
-        }
-        p.subtitle {
-            font-size: 14px;
-            color: #6b7280;
-        }
-        .network-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border-left: 6px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        /* Màu viền đại diện từng nhà mạng */
-        .viettel { border-left-color: #dc2626; }
-        .vinaphone { border-left-color: #2563eb; }
-        .mobifone { border-left-color: #0d9488; }
-        .vietnamobile { border-left-color: #7c3aed; }
-
-        .network-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .network-name {
-            font-size: 18px;
-            font-weight: 700;
-        }
-        .viettel .network-name { color: #dc2626; }
-        .vinaphone .network-name { color: #2563eb; }
-        .mobifone .network-name { color: #0d9488; }
-        .vietnamobile .network-name { color: #7c3aed; }
-
-        .sms-info {
-            font-size: 14px;
-            color: #4b5563;
-            background: #f9fafb;
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: 1px dashed #d1d5db;
-        }
-        .sms-info strong {
-            color: #111827;
-        }
-        .btn-send {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            color: white;
-            font-size: 15px;
-            transition: opacity 0.2s;
-        }
-        .btn-send:hover {
-            opacity: 0.85;
-        }
-        .viettel .btn-send { background-color: #dc2626; }
-        .vinaphone .btn-send { background-color: #2563eb; }
-        .mobifone .btn-send { background-color: #0d9488; }
-        .vietnamobile .btn-send { background-color: #7c3aed; }
-
-        .note {
-            font-size: 13px;
-            color: #9ca3af;
-            text-align: center;
-            margin-top: 25px;
-            line-height: 1.5;
-        }
-    </style>
+    <!-- Liên kết tới file CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -143,7 +45,6 @@
         <div class="sms-info">
             Gửi: <strong>DK D90</strong> → <strong>9084</strong>
         </div>
-        <!-- Cú pháp tin nhắn MobiFone thường dùng MO, nhưng mình giữ DK D90 theo yêu cầu của bạn -->
         <a href="sms:9084?body=DK%20D90" class="btn-send">Mở SMS đăng ký</a>
     </div>
 
@@ -153,7 +54,7 @@
             <span class="network-name">Vietnamobile</span>
         </div>
         <div class="sms-info">
-            Gửi: <strong>MO</strong> → <strong>123</strong> (Đã sửa đầu số 999 thành 123)
+            Gửi: <strong>MO</strong> → <strong>123</strong>
         </div>
         <a href="sms:123?body=MO" class="btn-send">Mở SMS đăng ký</a>
     </div>
@@ -164,5 +65,7 @@
     </p>
 </div>
 
+<!-- Liên kết tới file JS -->
+<script src="script.js"></script>
 </body>
 </html>
