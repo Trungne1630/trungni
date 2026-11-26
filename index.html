@@ -5,103 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký 4G Nhanh</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         body {
-            background-color: #f3f4f6;
-            color: #1f2937;
-            padding: 20px 15px;
+            background-color: #f0f4f8;
+            color: #1e293b;
+            padding: 30px 16px;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
         .container {
-            max-width: 500px;
+            max-width: 520px;
             width: 100%;
         }
         header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         h1 {
-            font-size: 24px;
-            color: #111827;
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
             margin-bottom: 8px;
         }
         p.subtitle {
             font-size: 14px;
-            color: #6b7280;
+            color: #64748b;
         }
+        
+        /* Thẻ nhà mạng */
         .network-card {
             background: #ffffff;
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            border-left: 6px solid #ccc;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        /* Màu viền đại diện từng nhà mạng */
-        .viettel { border-left-color: #dc2626; }
-        .vinaphone { border-left-color: #2563eb; }
-        .mobifone { border-left-color: #0d9488; }
-        .vietnamobile { border-left-color: #7c3aed; }
+        .network-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+        }
 
         .network-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 12px;
         }
         .network-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+        /* Chấm tròn màu đại diện nhà mạng */
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Màu sắc từng nhà mạng */
+        .viettel .dot { background-color: #dc2626; }
         .viettel .network-name { color: #dc2626; }
+        
+        .vinaphone .dot { background-color: #2563eb; }
         .vinaphone .network-name { color: #2563eb; }
+        
+        .mobifone .dot { background-color: #0d9488; }
         .mobifone .network-name { color: #0d9488; }
+        
+        .vietnamobile .dot { background-color: #7c3aed; }
         .vietnamobile .network-name { color: #7c3aed; }
 
         .sms-info {
             font-size: 14px;
-            color: #4b5563;
-            background: #f9fafb;
-            padding: 8px 12px;
-            border-radius: 6px;
-            border: 1px dashed #d1d5db;
+            color: #475569;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #f1f5f9;
         }
         .sms-info strong {
-            color: #111827;
+            color: #1e293b;
+            font-weight: 600;
         }
-        .btn-send {
-            display: block;
+
+        /* Nhóm nút bấm */
+        .button-group {
+            display: flex;
+            gap: 12px;
+        }
+        .btn {
+            flex: 1;
             text-align: center;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 12px 10px;
+            border-radius: 10px;
             font-weight: 600;
-            color: white;
             font-size: 15px;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            outline: none;
         }
-        .btn-send:hover {
-            opacity: 0.85;
+        
+        /* Nút Đăng ký qua SMS */
+        .btn-sms {
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .viettel .btn-send { background-color: #dc2626; }
-        .vinaphone .btn-send { background-color: #2563eb; }
-        .mobifone .btn-send { background-color: #0d9488; }
-        .vietnamobile .btn-send { background-color: #7c3aed; }
+        .viettel .btn-sms { background-color: #dc2626; }
+        .viettel .btn-sms:hover { background-color: #b91c1c; }
+        
+        .vinaphone .btn-sms { background-color: #2563eb; }
+        .vinaphone .btn-sms:hover { background-color: #1d4ed8; }
+        
+        .mobifone .btn-sms { background-color: #0d9488; }
+        .mobifone .btn-sms:hover { background-color: #0f766e; }
+        
+        .vietnamobile .btn-sms { background-color: #7c3aed; }
+        .vietnamobile .btn-sms:hover { background-color: #6d28d9; }
+
+        /* Nút Mở USSD (chỉ có ở Vina và Mobi theo ảnh của bạn) */
+        .btn-ussd {
+            background-color: white;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+        }
+        .btn-ussd:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
 
         .note {
             font-size: 13px;
-            color: #9ca3af;
+            color: #94a3b8;
             text-align: center;
-            margin-top: 25px;
-            line-height: 1.5;
+            margin-top: 30px;
+            line-height: 1.6;
+            padding: 0 10px;
         }
     </style>
 </head>
@@ -110,57 +165,69 @@
 <div class="container">
     <header>
         <h1>Đăng ký 4G Nhanh</h1>
-        <p class="subtitle">Chọn nhà mạng để mở SMS đăng ký (nội dung đã điền sẵn).</p>
+        <p class="subtitle">Chọn nhà mạng để đăng ký (nội dung đã điền sẵn).</p>
     </header>
 
     <!-- Viettel -->
     <div class="network-card viettel">
         <div class="network-header">
-            <span class="network-name">Viettel</span>
+            <span class="network-name"><span class="dot"></span>Viettel</span>
         </div>
         <div class="sms-info">
-            Gửi: <strong>X2</strong> → <strong>191</strong>
+            Cú pháp: Gửi <strong>X2</strong> → <strong>191</strong>
         </div>
-        <a href="sms:191?body=X2" class="btn-send">Mở SMS đăng ký</a>
+        <div class="button-group">
+            <a href="sms:191?body=X2" class="btn btn-sms">Đăng ký qua SMS</a>
+            <a href="tel:*098#" class="btn btn-ussd">Mở USSD</a>
+        </div>
     </div>
 
     <!-- VinaPhone -->
     <div class="network-card vinaphone">
         <div class="network-header">
-            <span class="network-name">VinaPhone</span>
+            <span class="network-name"><span class="dot"></span>VinaPhone</span>
         </div>
         <div class="sms-info">
-            Gửi: <strong>D7</strong> → <strong>888</strong>
+            Cú pháp: Gửi <strong>D7</strong> → <strong>888</strong>
         </div>
-        <a href="sms:888?body=D7" class="btn-send">Mở SMS đăng ký</a>
+        <div class="button-group">
+            <a href="sms:888?body=D7" class="btn btn-sms">Đăng ký qua SMS</a>
+            <a href="tel:*111#" class="btn btn-ussd">Mở USSD</a>
+        </div>
     </div>
 
     <!-- MobiFone -->
     <div class="network-card mobifone">
         <div class="network-header">
-            <span class="network-name">MobiFone</span>
+            <span class="network-name"><span class="dot"></span>MobiFone</span>
         </div>
         <div class="sms-info">
-            Gửi: <strong>DK D90</strong> → <strong>9084</strong>
+            Cú pháp: Gửi <strong>DK D90</strong> → <strong>9084</strong>
         </div>
-        <!-- Mã hóa khoảng trắng thành %20 để không bị lỗi khi mở SMS -->
-        <a href="sms:9084?body=DK%20D90" class="btn-send">Mở SMS đăng ký</a>
+        <div class="button-group">
+            <a href="sms:9084?body=DK%20D90" class="btn btn-sms">Đăng ký qua SMS</a>
+            <a href="tel:*090#" class="btn btn-ussd">Mở USSD</a>
+        </div>
     </div>
 
     <!-- Vietnamobile -->
     <div class="network-card vietnamobile">
         <div class="network-header">
-            <span class="network-name">Vietnamobile</span>
+            <span class="network-name"><span class="dot"></span>Vietnamobile</span>
         </div>
         <div class="sms-info">
-            Gửi: <strong>MO</strong> → <strong>123</strong>
+            Cú pháp: Gửi <strong>MO</strong> → <strong>123</strong> (Đã sửa lại từ 999)
         </div>
-        <a href="sms:123?body=MO" class="btn-send">Mở SMS đăng ký</a>
+        <div class="button-group">
+            <a href="sms:123?body=MO" class="btn btn-sms">Đăng ký qua SMS</a>
+            <!-- Vietnamobile không có USSD phổ biến nên để 1 nút full width -->
+            <a href="tel:*123#" class="btn btn-ussd">Mở USSD</a>
+        </div>
     </div>
 
     <p class="note">
-        * Trên điện thoại, nút sẽ mở ứng dụng SMS với số và nội dung điền sẵn. Bạn chỉ cần bấm Gửi.<br>
-        * Trên máy tính, nút có thể không hoạt động.
+        * Trên điện thoại, nút sẽ mở ứng dụng tương ứng với số và nội dung điền sẵn. Bạn chỉ cần bấm Gửi/Gọi.<br>
+        * Trên máy tính, các nút này có thể không hoạt động.
     </p>
 </div>
 
