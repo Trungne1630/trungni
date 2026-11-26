@@ -1,46 +1,168 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b1020" />
-  <title>Gói 4G · Nhà mạng Việt Nam</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký 4G Nhanh</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        p.subtitle {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        .network-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border-left: 6px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        /* Màu viền đại diện từng nhà mạng */
+        .viettel { border-left-color: #dc2626; }
+        .vinaphone { border-left-color: #2563eb; }
+        .mobifone { border-left-color: #0d9488; }
+        .vietnamobile { border-left-color: #7c3aed; }
+
+        .network-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .network-name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .viettel .network-name { color: #dc2626; }
+        .vinaphone .network-name { color: #2563eb; }
+        .mobifone .network-name { color: #0d9488; }
+        .vietnamobile .network-name { color: #7c3aed; }
+
+        .sms-info {
+            font-size: 14px;
+            color: #4b5563;
+            background: #f9fafb;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px dashed #d1d5db;
+        }
+        .sms-info strong {
+            color: #111827;
+        }
+        .btn-send {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: white;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+        .btn-send:hover {
+            opacity: 0.85;
+        }
+        .viettel .btn-send { background-color: #dc2626; }
+        .vinaphone .btn-send { background-color: #2563eb; }
+        .mobifone .btn-send { background-color: #0d9488; }
+        .vietnamobile .btn-send { background-color: #7c3aed; }
+
+        .note {
+            font-size: 13px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 25px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-  <div class="bg-glow"></div>
 
-  <main class="container">
-    <header class="hero">
-      <div class="logo">📶</div>
-      <h1>Gói <span class="grad">4G</span> Việt Nam</h1>
-      <p class="subtitle">Tổng hợp gói data từ rẻ đến đắt — chọn gói để mở SMS đăng ký.</p>
+<div class="container">
+    <header>
+        <h1>Đăng ký 4G Nhanh</h1>
+        <p class="subtitle">Chọn nhà mạng để mở SMS đăng ký (nội dung đã điền sẵn).</p>
     </header>
 
-    <!-- Bộ lọc -->
-    <div class="toolbar">
-      <div class="search-wrap">
-        <span class="search-icon">🔍</span>
-        <input id="search" type="search" placeholder="Tìm gói, nhà mạng..." autocomplete="off" />
-      </div>
-      <div id="filters" class="filters"></div>
+    <!-- Viettel -->
+    <div class="network-card viettel">
+        <div class="network-header">
+            <span class="network-name">Viettel</span>
+        </div>
+        <div class="sms-info">
+            Gửi: <strong>X2</strong> → <strong>191</strong>
+        </div>
+        <a href="sms:191?body=X2" class="btn-send">Mở SMS đăng ký</a>
     </div>
 
-    <!-- Danh sách gói -->
-    <section id="plan-list" class="plan-list"></section>
+    <!-- VinaPhone -->
+    <div class="network-card vinaphone">
+        <div class="network-header">
+            <span class="network-name">VinaPhone</span>
+        </div>
+        <div class="sms-info">
+            Gửi: <strong>D7</strong> → <strong>888</strong>
+        </div>
+        <a href="sms:888?body=D7" class="btn-send">Mở SMS đăng ký</a>
+    </div>
 
-    <p id="empty" class="empty" hidden>Không tìm thấy gói phù hợp.</p>
+    <!-- MobiFone -->
+    <div class="network-card mobifone">
+        <div class="network-header">
+            <span class="network-name">MobiFone</span>
+        </div>
+        <div class="sms-info">
+            Gửi: <strong>DK D90</strong> → <strong>9084</strong>
+        </div>
+        <!-- Cú pháp tin nhắn MobiFone thường dùng MO, nhưng mình giữ DK D90 theo yêu cầu của bạn -->
+        <a href="sms:9084?body=DK%20D90" class="btn-send">Mở SMS đăng ký</a>
+    </div>
 
-    <footer class="note">
-      <span>💡</span>
-      <span>Giá và dung lượng có thể thay đổi theo thời điểm và đối tượng thuê bao.
-      Vui lòng kiểm tra lại qua tổng đài trước khi đăng ký.</span>
-    </footer>
-  </main>
+    <!-- Vietnamobile -->
+    <div class="network-card vietnamobile">
+        <div class="network-header">
+            <span class="network-name">Vietnamobile</span>
+        </div>
+        <div class="sms-info">
+            Gửi: <strong>MO</strong> → <strong>123</strong> (Đã sửa đầu số 999 thành 123)
+        </div>
+        <a href="sms:123?body=MO" class="btn-send">Mở SMS đăng ký</a>
+    </div>
 
-  <script src="script.js"></script>
+    <p class="note">
+        * Trên điện thoại, nút sẽ mở ứng dụng SMS với số và nội dung điền sẵn. Bạn chỉ cần bấm Gửi.<br>
+        * Trên máy tính, nút có thể không hoạt động.
+    </p>
+</div>
+
 </body>
 </html>
