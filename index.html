@@ -3,20 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Đăng ký 4G - Nhà mạng Việt Nam</title>
+  <meta name="theme-color" content="#0b1020" />
+  <title>Gói 4G · Nhà mạng Việt Nam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="bg-glow"></div>
+
   <main class="container">
-    <h1>Đăng ký 4G</h1>
-    <p class="subtitle">Chọn nhà mạng để mở SMS đăng ký (nội dung đã điền sẵn).</p>
+    <header class="hero">
+      <div class="logo">📶</div>
+      <h1>Gói <span class="grad">4G</span> Việt Nam</h1>
+      <p class="subtitle">Tổng hợp gói data từ rẻ đến đắt — chọn gói để mở SMS đăng ký.</p>
+    </header>
 
-    <div id="carrier-list" class="carrier-list"></div>
+    <!-- Bộ lọc -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input id="search" type="search" placeholder="Tìm gói, nhà mạng..." autocomplete="off" />
+      </div>
+      <div id="filters" class="filters"></div>
+    </div>
 
-    <p class="note">
-      * Trên điện thoại, nút sẽ mở ứng dụng SMS với số và nội dung điền sẵn.
-      Bạn chỉ cần bấm <strong>Gửi</strong>. Trên máy tính, nút có thể không hoạt động.
-    </p>
+    <!-- Danh sách gói -->
+    <section id="plan-list" class="plan-list"></section>
+
+    <p id="empty" class="empty" hidden>Không tìm thấy gói phù hợp.</p>
+
+    <footer class="note">
+      <span>💡</span>
+      <span>Giá và dung lượng có thể thay đổi theo thời điểm và đối tượng thuê bao.
+      Vui lòng kiểm tra lại qua tổng đài trước khi đăng ký.</span>
+    </footer>
   </main>
 
   <script src="script.js"></script>
