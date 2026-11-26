@@ -1,318 +1,97 @@
-:root {
-  --bg: #0b1020;
-  --card: rgba(255, 255, 255, 0.04);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --text: #e8ecf8;
-  --text-dim: #93a0c0;
-  --primary: #4f8cff;
-  --primary-2: #8b5cf6;
-  --radius: 16px;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --bg: #f4f6fb;
-    --card: #ffffff;
-    --card-border: #e6eaf2;
-    --text: #0f172a;
-    --text-dim: #64748b;
-    --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  }
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
-
 body {
-  font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  padding: 36px 16px 60px;
-  display: flex;
-  justify-content: center;
-  overflow-x: hidden;
-  transition: background .3s, color .3s;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    padding: 20px 15px;
+    display: flex;
+    justify-content: center;
 }
-
-.bg-glow {
-  position: fixed; inset: 0; pointer-events: none; z-index: -1;
-  background:
-    radial-gradient(600px circle at 15% 10%, rgba(79, 140, 255, 0.22), transparent 60%),
-    radial-gradient(600px circle at 85% 90%, rgba(139, 92, 246, 0.20), transparent 60%);
-  filter: blur(20px);
-}
-
 .container {
-  width: 100%;
-  max-width: 680px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
+    max-width: 500px;
+    width: 100%;
 }
-
-/* Hero */
-.hero { text-align: center; padding: 4px 0; }
-
-.logo {
-  font-size: 1.9rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px; height: 60px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  box-shadow: 0 12px 30px rgba(79, 140, 255, 0.35);
-  margin-bottom: 12px;
+header {
+    text-align: center;
+    margin-bottom: 25px;
 }
-
-.hero h1 {
-  font-size: clamp(1.7rem, 5vw, 2.4rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
+h1 {
+    font-size: 24px;
+    color: #111827;
+    margin-bottom: 8px;
 }
-
-.grad {
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+p.subtitle {
+    font-size: 14px;
+    color: #6b7280;
 }
-
-.subtitle {
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  line-height: 1.5;
-  max-width: 440px;
-  margin: 0 auto;
+.network-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-left: 6px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
+.viettel { border-left-color: #dc2626; }
+.vinaphone { border-left-color: #2563eb; }
+.mobifone { border-left-color: #0d9488; }
+.vietnamobile { border-left-color: #7c3aed; }
 
-/* Toolbar */
-.toolbar {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.network-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.search-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
+.network-name {
+    font-size: 18px;
+    font-weight: 700;
 }
+.viettel .network-name { color: #dc2626; }
+.vinaphone .network-name { color: #2563eb; }
+.mobifone .network-name { color: #0d9488; }
+.vietnamobile .network-name { color: #7c3aed; }
 
-.search-icon {
-  position: absolute;
-  left: 14px;
-  font-size: 0.95rem;
-  opacity: 0.6;
-  pointer-events: none;
+.sms-info {
+    font-size: 14px;
+    color: #4b5563;
+    background: #f9fafb;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px dashed #d1d5db;
 }
-
-#search {
-  width: 100%;
-  padding: 12px 14px 12px 42px;
-  border-radius: 12px;
-  border: 1px solid var(--card-border);
-  background: var(--card);
-  color: var(--text);
-  font-family: inherit;
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
+.sms-info strong {
+    color: #111827;
 }
-
-#search:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
+.btn-send {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    font-size: 15px;
+    transition: opacity 0.2s;
 }
-
-#search::placeholder { color: var(--text-dim); }
-
-.filters {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.btn-send:hover {
+    opacity: 0.85;
 }
-
-.chip {
-  padding: 7px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--card-border);
-  background: var(--card);
-  color: var(--text-dim);
-  font-family: inherit;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .18s;
-}
-
-.chip:hover { color: var(--text); }
-
-.chip.active {
-  color: #fff;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  border-color: transparent;
-  box-shadow: 0 6px 16px rgba(79, 140, 255, 0.3);
-}
-
-/* Danh sách gói */
-.plan-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.plan {
-  position: relative;
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-left: 4px solid var(--accent, var(--primary));
-  border-radius: var(--radius);
-  padding: 16px 18px;
-  box-shadow: var(--shadow);
-  transition: transform .2s, box-shadow .2s;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.plan:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
-}
-
-.plan-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.plan-title {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-
-.plan-carrier {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--accent, var(--primary));
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.plan-carrier .dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent, var(--primary));
-}
-
-.plan-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  word-break: break-word;
-}
-
-.plan-data {
-  font-size: 0.86rem;
-  color: var(--text-dim);
-}
-
-.plan-price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  flex-shrink: 0;
-  text-align: right;
-}
-
-.price-num {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--accent, var(--primary));
-  white-space: nowrap;
-}
-
-.price-dur {
-  font-size: 0.76rem;
-  color: var(--text-dim);
-}
-
-/* Nút trong plan */
-.plan-actions {
-  display: flex;
-  gap: 8px;
-}
-
-.btn {
-  padding: 10px 14px;
-  border: none;
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 0.87rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform .15s, filter .15s, background .2s;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  flex: 1;
-}
-
-.btn:active { transform: scale(0.97); }
-
-.btn-sms {
-  background: linear-gradient(135deg, var(--accent, var(--primary)),
-              color-mix(in srgb, var(--accent, var(--primary)) 65%, #000));
-  color: #fff;
-  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent, var(--primary)) 30%, transparent);
-}
-
-.btn-sms:hover { filter: brightness(1.1); }
-
-.btn-copy {
-  background: transparent;
-  border: 1.5px solid var(--card-border);
-  color: var(--text-dim);
-  flex: 0 0 auto;
-}
-
-.btn-copy:hover {
-  border-color: var(--accent, var(--primary));
-  color: var(--accent, var(--primary));
-}
-
-.empty {
-  text-align: center;
-  color: var(--text-dim);
-  padding: 32px 0;
-  font-size: 0.9rem;
-}
+.viettel .btn-send { background-color: #dc2626; }
+.vinaphone .btn-send { background-color: #2563eb; }
+.mobifone .btn-send { background-color: #0d9488; }
+.vietnamobile .btn-send { background-color: #7c3aed; }
 
 .note {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  line-height: 1.55;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px dashed var(--card-border);
-  background: rgba(127, 127, 127, 0.05);
-}
-
-@media (max-width: 420px) {
-  body { padding: 24px 12px 40px; }
-  .plan-actions { flex-wrap: wrap; }
-  .btn-sms { flex: 1 1 100%; }
+    font-size: 13px;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 25px;
+    line-height: 1.5;
 }
